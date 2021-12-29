@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+public class Quiz {
+
+	static Scanner input = new Scanner(System.in);
+
+	public static void main(String[] args) {
+		int x, y; 						// x-axis, y-axis
+        int area = 0;					// total area
+        String number;  				// the number of squares
+        
+        int[][] arr = new int[100][100];
+
+        // input the number of squares
+        System.out.print("Enter the number of squares: ");
+        int count = input.nextInt();
+        input.nextLine();
+
+        // fill 1 in the arrays that square occupies
+        for(int i = 0; i < count; i++) {   
+        	System.out.print("Enter x-axis and y-axis: ");
+            number = input.nextLine();
+            String[] parts = number.split(" ");
+            x = Integer.parseInt(parts[0]);
+            y = Integer.parseInt(parts[1]);
+
+            for(int a=x; a<x+10; a++) {
+                for(int b=y; b<y+10; b++) {
+                    arr[a][b] = 1;
+                }
+            }
+        }
+        
+        // counting the number of squares
+        for (int i=0; i<arr.length; i++) {
+            for (int j=0; j<arr[0].length; j++) {
+                if(arr[i][j] != 0) {
+                    ++area;
+                }
+            }
+        }
+        // output the number of squares
+        System.out.println("Total area is " + area);
+    
+	}
+
+}
